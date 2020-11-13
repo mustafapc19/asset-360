@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\BzContract;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+// use Illuminate\Support\Facades\Validator;
+// use Illuminate\Contracts\Validation\Validator;
+// use Illuminate\Validation\Validator;
+use Validator;
 
 class BzContractController extends Controller
 {
@@ -18,7 +21,7 @@ class BzContractController extends Controller
     public function index()
     {
         //
-        return view('bzcontracts', [
+        return view('bzcontracts.bzcontracts', [
             'bzcontracts' => BzContract::orderBy('created_at', 'asc')->get()
         ]);
     }
@@ -44,10 +47,12 @@ class BzContractController extends Controller
         //
         $validator = Validator::make($request->all(), [
             'bcId' => 'required|unique:bz_contracts|max:255',
+        ],[
+            'required' => 'This field is required.',
         ]);
 
         if ($validator->fails()) {
-            return redirect('/bzcontractform')
+            return redirect(/* '/bzcontractform' */)->back()
                 ->withInput()
                 ->withErrors($validator);
         }

@@ -18,25 +18,31 @@ use App\Task;
 use Illuminate\Http\Request;
 use App\Invoice;
 use App\Http\Controllers\EmployeeController;
-
+use Illuminate\Contracts\Validation\Validator;
 use App\Http\Controllers\BzContractController;
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::auth();
+});
 
 Route::group(['middleware' => ['web']], function () {
     /**
      * Show Task Dashboard
      */
+
+
+    Route::get('/home', 'HomeController@index');
+
     Route::get('/', function () {
         return view('welcome');
     });
 
     Route::get('bzcontractform', function () {
-        return view('bzcontractsform');
+        return view('bzcontracts.bzcontractsform');
     });
     Route::resource('bzcontract', 'BzContractController');
 });
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
+/* Route::group(['middleware' => 'web'], function () {
 
-    Route::get('/home', 'HomeController@index');
-});
+}); */
