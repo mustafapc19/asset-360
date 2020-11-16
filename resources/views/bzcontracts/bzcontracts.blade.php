@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="panel-body" style="overflow-x:auto;">
-                    @include('common.errors')
+                    {{-- @include('common.errors') --}}
                         <table class="table table-striped bzcontract-table" >
                             <thead>
                                 <th>Bz Contract Id</th>

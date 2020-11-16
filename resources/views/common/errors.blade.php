@@ -9,17 +9,11 @@
     </ul>
 </div> --}}
 
-@if (count($errors) > 0)
+@if ($errors->has($fieldName))
     <!-- Form Error List -->
-    <div class="alert alert-danger">
-        <strong>Whoops! Something went wrong!</strong>
-
-        <br><br>
-
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+    <div class="text-danger">
+        @foreach ($errors->get($fieldName) as $error)
+            <span>{{ $error }}</span>
+        @endforeach
     </div>
 @endif

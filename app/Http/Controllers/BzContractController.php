@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\BzContract;
+use App\Models\BzContract;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 // use Illuminate\Support\Facades\Validator;
@@ -46,7 +46,26 @@ class BzContractController extends Controller
     {
         //
         $validator = Validator::make($request->all(), [
+            'Class' => 'required|max:255',
             'bcId' => 'required|unique:bz_contracts|max:255',
+            'apId' => 'required|max:255',
+            'bzContractType' => 'required|max:255',
+            'Description' => 'required|max:255',
+            'Name' => 'required|max:255',
+            'startDate' => 'required|max:255',
+            'endDate' => 'required|max:255',
+            'Term' => 'required|max:255',
+            'primaryParty_BzContactId' => 'required|max:255',
+            'primaryParty_BzOrgId' => 'required|max:255',
+            'counterParty_BzOrgId' => 'required|max:255',
+            'counterParty_BzContactId' => 'required|max:255',
+            'contractValue' => 'required|max:255',
+            'paymentStatus' => 'required|max:255',
+            'Status' => 'required|max:255',
+            'Active' => 'required|max:255',
+            'earnedRevenue' => 'required|max:255',
+            'bzLocation' => 'required|max:255',
+
         ],[
             'required' => 'This field is required.',
         ]);

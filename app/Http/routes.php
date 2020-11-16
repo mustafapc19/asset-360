@@ -13,17 +13,13 @@
 
 
 
-
-use App\Task;
 use Illuminate\Http\Request;
-use App\Invoice;
-use App\Http\Controllers\EmployeeController;
 use Illuminate\Contracts\Validation\Validator;
 use App\Http\Controllers\BzContractController;
 
-Route::group(['middleware' => 'auth'], function() {
+/* Route::group(['middleware' => 'auth'], function() {
     Route::auth();
-});
+}); */
 
 Route::group(['middleware' => ['web']], function () {
     /**
@@ -43,6 +39,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('bzcontract', 'BzContractController');
 });
 
-/* Route::group(['middleware' => 'web'], function () {
-
-}); */
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/home', 'HomeController@index');
+});
