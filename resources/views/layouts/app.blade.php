@@ -82,6 +82,7 @@
                     <ul class="nav flex-column">
                     <li class="nav-item"><a href="{{ url('/')}}">Home</a></li>
                     <li class="nav-item"><a href="{{ url('/bzcontract')}}">BzContract</a></li>
+                    <li class="nav-item"><a href="{{ url('/bzpart')}}">BzPart</a></li>
                     </ul>
                 </div>
             </nav>

@@ -16,6 +16,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Validation\Validator;
 use App\Http\Controllers\BzContractController;
+use App\Http\Controllers\BzPartController;
 
 /* Route::group(['middleware' => 'auth'], function() {
     Route::auth();
@@ -37,6 +38,11 @@ Route::group(['middleware' => ['web']], function () {
         return view('bzcontracts.bzcontractsform');
     });
     Route::resource('bzcontract', 'BzContractController');
+
+    Route::get('bzpartform', function () {
+        return view('bzparts.bzpartsform');
+    });
+    Route::resource('bzpart', 'BzPartController');
 });
 
 Route::group(['middleware' => 'web'], function () {
